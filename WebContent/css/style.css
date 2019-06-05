@@ -1,0 +1,975 @@
+/* @By Yang XinXin */
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	background: none repeat scroll 0 0 transparent;
+	border: 0 none;
+	font-size: 12px;
+	outline: 0 none;
+	color: #90000A; /* 色调:145; 饱和度:240; 亮度:68;	红:145; 绿:0; 蓝:10; */
+	vertical-align: baseline;
+}
+
+/* 显示大的背景 */
+body {
+	background-color: #FFFFFF; /* 必须设置背景颜色，否则在IE9下会显示成灰色 */
+    background: url("/images/top.gif") no-repeat scroll center top #FFFFFF;
+}
+
+/* 去除超连接点击之后的虚线框 */
+a {
+	border: none;
+	outline: none; /* Firefox */
+	text-decoration: none;
+	blr: expression(this.onFocus = this.blur()); /* IE, Opera*/
+}
+
+/* 超连接 样式 */
+a:link {
+	color: #90000A;
+}
+
+/* 鼠标移上的样式 */
+a:hover {
+	color: #FF0000;
+}
+
+/* 超连接激活时的样式 */
+a:active {
+	color: #00FF00;
+	text-decoration: underline;
+}
+
+/* 图片无边框 */
+img {
+	border: none;
+}
+
+
+/* 整个页面容器 */
+#container {
+	width: 1000px;
+	margin: 0 auto; /* 居中 */
+	background: #FFFFFF;
+}
+
+/* 顶部的背景图片 */
+#top {
+	height: 130px;
+	background: url("/images/top.gif") no-repeat scroll center top #FFFFFF;
+}
+
+/* 导航菜单 */
+#menu {
+	border-bottom: 1px solid #E6DBC0;
+	float: left;
+	height: 72px;
+	_height: 80px;
+	width: 1000px;
+	padding-bottom: 10px;
+	_padding-bottom: 1px;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+
+/* 最后一个导航菜单 */
+#menu ul #lastMenu {
+    border-right: medium none !important;
+}
+
+/* 导航菜单中不显示前面的点 */
+#menu ul {
+	padding-top: 5px;
+    list-style: none outside none;
+}
+
+/* 导航菜单的外边距为：0 */
+#menu ul, #menu li {
+    margin: 0;
+}
+
+/* 兼容IE6：设置每个li的宽度 */
+#menu ul li {
+    float: left;
+    width: 125px;
+    background-color: #FFF;
+}
+
+/* 导航菜单上显示的箭头图片 */
+#menu .menu_img {
+	float: left;
+	height: 7px;
+	width: 124px;
+	opacity: 0;
+	background-color: #FFFFFF;
+	background: url("/images/arrow1.gif") no-repeat scroll center center #FFFFFF;
+}
+
+/* 菜单主体 */
+#menu ul li a, #menu ul li a:visited {
+    color: #000000;
+    background-color: #FFFFFF;
+    display: block;
+    width: 124px;
+    height: 59px;
+    padding: 16px 0 0 0;
+    margin: 0;
+    _padding-top: 0;
+    text-align: center;
+    text-decoration: none;
+    border-right: 1px solid #E6DBC0;
+}
+
+/* 菜单的中文粗体 */
+#menu ul li a strong, #menu ul li a:visited strong {
+    letter-spacing: -1px; /* 字的间距 */
+    color: #90000A;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: DroidSansBold;
+}
+/* 菜单的英文 */
+#menu ul li a p, #menu ul li a:visited p {
+    color: #90000A;
+	font-size: 13px;
+    font-family: DroidSansRegular;
+}
+
+/* 菜单下面的动画横线 */
+#menu .borders {
+	float: left;
+	opacity: 0;
+	background-color: #90000A;
+	height: 2px;
+	_height: 2px;
+	width: 124px;
+}
+
+/* 当前激活的菜单 */
+#menu .active {
+	
+}
+
+
+/* 公司服务宗旨（banner） */
+#banner {
+	width: 1000px;
+	height: 100px;
+	background: url("../images/banner.jpg") no-repeat scroll center center #FFFFFF;
+}
+
+
+/* 整个内容div */
+#content {
+	width: 1000px;
+}
+
+#content_left {
+	width: 220px;
+}
+
+
+/* 首页主要内容左边的div */
+#show_content_left {
+	float: left;
+	padding: 10px;
+	width: 200px;
+	height: 280px;
+	line-height: 20px;
+	overflow: hidden;
+}
+	/* 左边的div中的公司介绍 */
+	#company_detail {
+		float: right; 
+		padding: 3px 0 8px 10px;
+		_padding: 5px 0 8px 10px;
+		background: url("/images/arrow.gif") no-repeat scroll left 10px #E6DBC0;
+	}
+
+/* 首页主要内容中间的div */
+#show_content_middle {
+	float: left;
+	padding: 3px;
+	width: 538px; /* 1000 - 220 - 8 - 220 - 8 - 3*2 */
+	height: 294px; /* 300 - 3*2 */
+}
+
+/* 最新案例的整体样式 */
+#show_content_right {
+	float: right;
+	padding: 8px;
+	width: 204px;
+	height: 284px;
+	line-height: 18px;
+	overflow: hidden;
+}
+	/* 最新案例的每条信息 */
+	.show_content_right_info {
+		float: left;
+		width: 204px;
+		padding-top: 4px;
+		_padding-right: 2px;
+		padding-left: 7px;
+		background: url("/images/point.gif") no-repeat scroll left 10px #E6DBC0;
+		overflow: hidden;
+	}
+
+.block_case_sub_info {
+	float: left;
+	width: 203px; /* (.block_case_head)217 - 2 - 2 */
+	text-align: left;
+	margin-top: 5px;
+	margin-left: 2px;
+	padding-left: 12px;
+	padding-bottom: 1px;
+	height: 19px;
+	border-bottom: 1px dashed #90000A;
+	background: url("/images/point.gif") no-repeat scroll 5px 4px #E6DBC0;
+	overflow: hidden;
+}
+
+
+/* 案例图片块 */
+.block_case_head {
+	height: 165px;
+	_height: 168px;
+	width: 217px; /* 220 - (div_body)1px - (padding-left)2px */
+}
+
+/* 案例标题块 */
+.block_case {
+	height: 165px;
+	_height: 168px;
+	width: 251px; /*  */
+}
+
+/* 案例图片块 和 案例标题块 的公共属性 */
+.block_case_head, .block_case_head1, .block_case_head2, .block_case {
+	float: left;
+	text-align: center;
+	color: #90000A; /* 字体颜色 */
+	padding-top: 3px; /* 图片与顶部的距离 */
+	background-color: #E6DBC0;
+	overflow: hidden;
+}
+
+/* 两排图片的高度 */
+.block_case_head1 {
+	height: 341px;
+	_height: 346px;
+	width: 217px; /* 220 - (div_body)1px - (padding-left)2px */
+}
+/* 三排图片的高度 */
+.block_case_head2 {
+	height: 517px;
+	_height: 526px;
+	width: 217px; /* 220 - (div_body)1px - (padding-left)2px */
+}
+
+/* 两排图片的主体 */
+.block_case_body1 {
+	float: left;
+	height: 344px; /* 168 + 8 + 168 */
+}
+/* 三排图片的主体 */
+.block_case_body2 {
+	float: left;
+	height: 520px; /* 168 + 8 + 168 + 8 + 168 */
+}
+
+
+/* 首页主要内容div的公有属性 */
+#show_content_left, #show_content_middle, #show_content_right {
+	background-color: #E6DBC0;
+}
+
+
+
+/* div的标题 */
+.div_title {
+	height: 15px;
+	width: 1000px;
+	padding: 5px 0;
+	background: url("../images/bj.gif") no-repeat scroll center center #FFFFFF;
+	overflow: hidden;
+	
+	/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+	-moz-border-radius: 3px 3px 0 0; /* Firefox 1+ */
+	-webkit-border-radius: 3px 3px 0 0; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 3px 3px 0 0; /* IE9, Opera 10.5+ */
+}
+.title1 {
+	float: left;
+	font-size: 14px;
+	padding: 1px 0 0 30px;
+	font-weight: bold;
+	overflow: hidden;
+}
+.more {
+	float: right;
+	font-size: 12px;
+	padding: 1px 5px 0 0;
+	overflow: hidden;
+}
+
+
+
+/* div的标题 */
+.div_body {
+	width: 996px; /* 1000 - 1(border)*2 - (padding-left)2px */
+	padding: 2px 0 2px 2px;
+	background-color: #FFFFFF;
+	border: 1px #E6DBC0 solid;
+	margin: 0 auto;
+	overflow: hidden;
+	
+	/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+	-moz-border-radius: 0 0 3px 3px; /* Firefox 1+ */
+	-webkit-border-radius: 0 0 3px 3px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 0 0 3px 3px; /* IE9, Opera 10.5+ */
+}
+
+/* 合作伙伴 */
+#corperation {
+	float: left;
+	width: 998px; /* 1000 - 1(border)*2 */
+	padding: 6px 0 0;
+	height: 66px;
+	background-color: #FFFFFF;
+	position: relative;
+	border: 1px #E6DBC0 solid;
+	
+	margin: 0 auto;
+	overflow: hidden;
+	
+	/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+	-moz-border-radius: 0 0 3px 3px; /* Firefox 1+ */
+	-webkit-border-radius: 0 0 3px 3px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 0 0 3px 3px; /* IE9, Opera 10.5+ */
+}
+
+
+#flow {
+	width: 998px; /* 1000 - 1(border)*2 */
+	padding-top: 10px;
+	height: 45px;
+	background-color: #FFFFFF;
+	border: 1px #E6DBC0 solid;
+	margin: 0 auto;
+	overflow: hidden;
+	
+	/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+	-moz-border-radius: 0 0 3px 3px; /* Firefox 1+ */
+	-webkit-border-radius: 0 0 3px 3px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 0 0 3px 3px; /* IE9, Opera 10.5+ */
+}
+.block1 {
+	float: left;
+	width: 90px;
+	height: 45px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: #FFFFFF;
+}
+.block2 {
+	float: left;
+	width: 113px;
+	height: 45px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: #FFFFFF;
+}
+.block3 {
+	float: left;
+	width: 124px;
+	height: 45px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: #FFFFFF;
+}
+.direction {
+	float: left;
+	width: 25px;
+	height: 45px;
+	background-color: #FF0000;
+	background: url("/images/arrow2.gif") no-repeat scroll center center #FFFFFF;
+}
+
+
+
+/* 案例展示 */
+#case {
+	float: left;
+	width: 1000px;
+	background-color: #FFFFFF;
+}
+	/* 案例展示的顶部 */
+	#case_top {
+		width: 1000px;
+		background-color: #FFFFFF;
+	}
+		/* 案例展示的顶部的左边 */
+		#case_top_left {
+			float: left;
+			height: 18px;
+			width: 130px;
+			padding: 5px 0;
+			background-color: #E6DBC0;
+		
+			/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+			-moz-border-radius: 3px 0 0 0; /* Firefox 1+ */
+			-webkit-border-radius: 3px 0 0 0; /* Chrome/Chromium, Safri 3.0+ */
+			border-radius: 3px 0 0 0; /* IE9, Opera 10.5+ */
+		}
+		/* 案例展示的顶部的右边 */
+		#case_top_right {
+			float: left;
+			padding: 3px 0 0 0;
+			background-color: #E6DBC0;
+		
+			/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+			-moz-border-radius: 0 3px 0 0; /* Firefox 1+ */
+			-webkit-border-radius: 0 3px 0 0; /* Chrome/Chromium, Safri 3.0+ */
+			border-radius: 0 3px 0 0; /* IE9, Opera 10.5+ */
+		}
+			#case_top_right ul {
+				margin: 0;
+				padding: 0;
+				height: 25px; /* 740 - (下面的分类推荐)156 - (gap_row)10 * 3 - (block_case) 260 * 2  */
+				width: 870px; /* 1000 - 130 */
+			}
+			
+			/* 标签页 */
+			#case_top_right li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			/* 让所有的 li 排在同一行 */
+			#case_top_right li {
+				float: left;
+				padding: 3px 15px;
+				_padding: 3px 15px 1px;
+				margin-right: 3px;
+				font-size: 12px;
+				
+				border: 1px solid #FFFFFF; /* 与下面相呼应 */
+				background-color: #E6DBC0;
+				color: #FFFFFF;
+				cursor: pointer;
+			}
+	#case_bottom {
+		width: 1000px;
+		background-color: #FFFFFF;
+	}
+
+
+.div_main_middle {
+	width: 238px; /* 240 - (border(1) * 2) */
+	height: 246px; /* 260 - (7 * 2) */
+	border-left: 1px solid #C2D4DE;
+	border-right: 1px solid #C2D4DE;
+	overflow: hidden;
+}
+.div_main_middle_title {
+	width: 206px; /* 240 - 17 * 2 */
+	height: 42px;
+	padding-left: 17px; /* (210 - 175) / 2 */
+	overflow: hidden;
+}
+
+/* 所有团购的中间的图片 */
+.div_main_middle_img {
+	height: 133px; /* 图片的高度 */
+	text-align: center;
+}
+
+/* 所有团购的中间的现价和人气 */
+.div_main_middle_offPriceHits {
+	width: 206px; /* 240 - 17 * 2 */
+	height: 25px;
+	padding-top: 3px;
+	padding-left: 17px; /* (210 - 175) / 2 */
+	overflow: hidden;
+}
+
+/* 所有团购的中间的现价 */
+.div_main_middle_offPrice {
+	float: left;
+	width: 130px;
+	font-size: 14px;
+}
+
+/* 所有团购的中间的人气 */
+#div_main_middle_Hits {
+	font-size: 13px;
+	color: #AAAAFF;
+}
+
+/* 所有团购的中间的原价和折扣 */
+.div_main_middle_priceDiscount {
+	width: 206px; /* 240 - 17 * 2 */
+	height: 43px; /* 246 - 42 - 133 - 28 */
+	padding-left: 17px; /* (210 - 175) / 2 */
+	overflow: hidden;
+}
+
+/* 原价和折扣在左边 */
+.div_main_middle_price {
+	float: left;
+	width: 120px;
+}
+
+/* 去看看按纽的背景图片 */
+.div_main_middle_go {
+	padding-top: 6px;
+}
+
+
+
+/* 左边的导航 */
+#content_left {
+	position: relative;
+	float: left;
+	width: 220px;
+	background-color: #E6DBC0;
+}
+
+/* 左边的导航的上面的标题 */
+#content_left_top {
+	height: 15px;
+	padding: 5px 0;
+	background: url("../images/bj1.gif") repeat-x scroll center center #FFFFFF;
+	overflow: hidden;
+}
+.title2 {
+	float: left;
+	font-size: 14px;
+	padding: 1px 0 0 30px;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+
+/* 左边的导航的下面的菜单导航 */
+#content_left_bottom {
+	float: left;
+	width: 218px;
+	background-color: #FFFFFF;
+	border: 1px #E6DBC0 solid;
+	margin: 0 auto;
+	padding: 5px 0;
+	overflow: hidden;
+	border: 1px solid #E6DBC0;
+	
+	/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+	-moz-border-radius: 0 0 3px 3px; /* Firefox 1+ */
+	-webkit-border-radius: 0 0 3px 3px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 0 0 3px 3px; /* IE9, Opera 10.5+ */
+}
+
+/* 菜单组 */
+#content_left_bottom ul {
+	margin: 5px 1px 5px 1px;;	
+}
+
+/* 每个菜单行 */
+#content_left_bottom li {
+	margin: 5px;
+	padding: 7px 0 7px 20px;
+	cursor: pointer;
+}
+
+/* 每个菜单行*/
+#content_left ul li {
+	list-style: none outside none;
+	background: none repeat scroll 0 0 #EEEEEE;
+	font-size: 13px;
+	/* 默认所有的li都有灰色箭头的背景 */
+	background: url("../images/arrow_grey.gif") no-repeat scroll 95% 50% #EEEEEE;
+}
+
+/* 当前选择的li的背景：黑色箭头 */
+#content_left ul li.tabin {
+	background: url("../images/arrow_red.gif") no-repeat scroll 95% 50% #EEEEEE;
+}
+
+/* 鼠标移到每个菜单行上的超连接样式 */
+#content_left_bottom ul li:hover {
+	color: #FF0000 !important; /* 字体颜色 */
+	border-left: 7px #E6DBC0 solid;
+	padding-left: 12px;
+	/* 鼠标移到li上显示蓝色的箭头 */
+	background: url("../images/arrow_blue.gif") no-repeat scroll 95% 50% #DFE4E8;
+}
+
+
+/* 右边的内容 */
+#content_right {
+	float: right;
+	background-color: #FFFFFF;
+	width: 770px;
+	text-align: center;
+}
+
+
+/* 当前显示的区域 */
+div.contentin {
+	clear: left;
+	background-color: #FFFFFF;
+	display: block;
+}
+
+div.contentin .img {
+	/* 圆角(top-left, top-right, bottom-right, bottom-left) */
+	-moz-border-radius: 3px; /* Firefox 1+ */
+	-webkit-border-radius: 3px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 3px; /* IE9, Opera 10.5+ */
+	
+	/* 阴影 (rgba 是原始 RGB 的扩展，加入了第四个参数：alpha通道，范围是0-1之间的小数，象：opacity : 0.95, 遮罩层不透明度) */
+	/* 阴影水平偏移值的四个参数：(可取正负值)；阴影垂直偏移值(可取正负值)；阴影模糊值；阴影颜色 */
+	-moz-box-shadow: 1px 5px 19px rgba(0, 0, 0, 0.7); /* Firefox 3.5+ */
+	-webkit-box-shadow: 1px 5px 19px rgba(0, 0, 0, 0.7); /* Safri 3.0+, Chrome/Chromium */
+	box-shadow: 1px 5px 19px rgba(0, 0, 0, 0.7); /* Opera 10.5+, IE9 */
+}
+
+/* 不显示的区域 */
+div.content {
+	display: none;
+}
+
+div.project_describe {
+	text-align: left;
+	margin: 30px 30px 15px;
+	font-size: 14px;
+	font-family: Arial, Verdana;
+	display: block;
+	font-weight: bold;
+	line-height: 26px;
+	overflow: hidden;
+}
+
+
+
+/* 标题_16号字体_粗体 */
+.title_16_b {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* 行.空隙.高度为8 */
+.gap_row {
+	clear: both;
+	height: 8px;
+}
+
+/* 列.空隙 */
+.gap_column {
+	float: left; /* 代替width: 1000px; */
+	width: 8px;
+}
+
+/* 行和列.空隙的公共属性 */
+.gap_row, .gap_column {
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+
+
+/* 页脚的版权信息 */
+#footer {
+    margin: 0 auto;
+	height: 260px;
+	width: 1000px;
+	background: url("/images/footer.png") repeat-x scroll 0 bottom;
+	clear: both;
+	font-family: "DroidSansRegular";
+    overflow: hidden;
+}
+
+/* 页脚样式 */
+#footer p {
+	color: #90000A;
+    line-height: 30px;
+    margin: 20px 0 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 页脚联系电话的字体大小和颜色 */
+#footer p strong {
+	color: #90000A;
+	font-size: 15px;
+}
+
+
+
+/* 左上角 */
+.corner_left_top {
+	background: url("../images/left_top.gif") no-repeat scroll 0 0 transparent;
+	float: left;
+	width: 9px;
+	height: 9px;
+	overflow: hidden;
+}
+
+/* 上面中间 */
+.div_middle_top {
+	border-top: 1px solid #E6DBC0;
+	float: left;
+	width: 752px; /* 770(宽) - (9 * 2) */
+	height: 8px;
+	overflow: hidden;
+}
+
+/* 右上角 */
+.corner_right_top {
+	background: url("../images/right_top.gif") no-repeat scroll 0 0 transparent;
+	float: left;
+	width: 9px;
+	height: 9px;
+	overflow: hidden;
+}
+
+/* 中间区域 */
+.div_middle_middle {
+	float: left;
+	width: 768px; /* 770(宽) - [1(border) * 2] */
+	border-left: 1px solid #E6DBC0;
+	border-right: 1px solid #E6DBC0;
+	overflow: hidden;
+}
+
+/* 左下角 */
+.corner_left_bottom {
+	background: url("../images/left_bottom.gif") no-repeat scroll 0 0 transparent;
+	float: left;
+	width: 9px;
+	height: 9px;
+	overflow: hidden;
+}
+
+/* 下面中间 */
+.div_middle_bottom {
+	border-bottom: 1px solid #E6DBC0;
+	float: left;
+	width: 752px; /* 745(宽) - (9 * 2) */
+	height: 8px;
+	overflow: hidden;
+}
+
+/* 右下角 */
+.corner_right_bottom {
+	background: url("../images/right_bottom.gif") no-repeat scroll 0 0 transparent;
+	float: left;
+	width: 9px;
+	height: 9px;
+	overflow: hidden;
+}
+
+/* 内容右边内容 */
+.content_right_content {
+	text-align: left;
+	padding: 10px;
+	width: 752;
+	line-height: 20px;
+	font-size: 16px;
+}
+
+/* 在线留言表单 */
+#content_right_content_message, #message {
+	width: 745px; /* 748 - border(1) * 2 - 1(有阴影) */
+}
+
+/* 表单的标题 */
+#form_title {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 2px 0 8px 20px;
+	_padding: 8px 0 13px 20px;
+	/* CSS3的阴影效果 */
+	text-shadow: 1px 1px 3px rgba(50, 50, 50, 0.3);
+}
+
+/* 提示标签的样式 */
+#form_item_name, #form_item_telephone, #form_item_content {
+	display: block;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: left;
+	width: 700px;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	_margin-bottom: 0;
+	line-height: 18px;
+	text-shadow: none;
+}
+#content_right_content_message .form_item {
+	padding: 0 0 5px 20px;
+}
+
+/* 表单的操作区域 */
+#content_right_content_message #form_opt {
+	padding: 5px 0 0 20px;
+}
+
+/* 表单的输入框 */
+#content_right_content_message #name, #content_right_content_message #telephone, #content_right_content_message #content1 {
+	font-family: Arial, Verdana;
+	font-size: 15px;
+	padding: 5px;
+	_padding: 5px 5px 2px 5px;
+	border: 1px solid #b9bdc1;
+	color: #797979;
+}
+#content_right_content_message #name, #content_right_content_message #telephone {
+	width: 400px;
+}
+#content_right_content_message #content1 {
+	height: 150px;
+	width: 600px;
+	resize: none;
+}
+
+
+
+/* 留言图标 */
+.post{
+	float: left;
+	width: 17px;
+	height: 17px;
+	padding-top: 3px;
+	background: url("../images/post.gif") no-repeat center center;
+}
+
+/* 留言人 */
+.message_people {
+	padding: 2px 0 0 20px;
+}
+
+/* 留言内容 */
+.message_content {
+	font-size: 13px;
+	margin: 0 20px;
+	padding: 2px 0 0 50px;
+	background-color: #EEEEEE;
+}
+
+/* 留言回复 */
+.message_reply {
+	color: #FF0000;
+	margin: 0 20px;
+	padding: 2px 0 2px 50px;
+	background-color: #FFFFD9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 在线留言的标题 */
+h3 {
+	margin: 15px;
+	font-size: 22px;
+	text-shadow: 1px 1px 3px rgba(50, 50, 50, 0.3);
+	width: 325px;
+	_padding-top: 2px;
+}
+
+/* 表单的标题 */
+label {
+	text-shadow: 2px 2px 2px #CCCCCC;
+	margin-right: 10px;
+	text-align: right;
+	width: 200px;
+	font-size: 15px;
+}
+label_detail {
+	font-size: 18px;
+}
+label_detail_zh {
+	font-size: 15px;
+}
+label_detail, label_detail_zh {
+	text-shadow: 2px 2px 2px #E6DBC0;
+	margin-left: 10px;
+	width: 400px;
+}
+label, label_detail, label_detail_zh {
+	float: left;
+	font-family: Arial, Verdana;
+	display: block;
+	font-weight: bold;
+	line-height: 26px;
+}
+.label_a {
+	font-size: 18px;
+}
+
+
+
+p, ul, li {
+    font-size: 15px;
+}
+ul, ol {
+    margin-left: 5px;
+}
+p {
+    color: #333333;
+    line-height: 1.3em;
+}
+p, ul, li {
+    font-size: 15px;
+}
+p {
+    font-weight: normal;
+}
+
+/* 最大长度提示的字体颜色 */
+.charsLeft {
+	color: #FF0000;
+	_padding-left: 3px;
+	font-weight: bold;
+}
+
+/* 按纽样式 */
+#btn {
+	cursor: pointer;
+	padding: 3px 15px 3px 15px;
+	_padding: 5px 3px 1px 3px;
+	height: 23px;
+	_height: 22px;
+	font-size: 12px;
+	border: none;
+	background-color: #E6DBC0;
+	blr: expression(this.onFocus = this.blur () );
+}
+
+/* 按纽样式（点击后没有虚线框）*/
+#btn::-moz-focus-inner {
+	border: none;
+	border-color: transparent !important;
+}
+
+/* 四个圆角(top-left, top-right, bottom-right, bottom-left) */
+#show_content_left, #show_content_middle, #show_content_right, #content_left, #content_left_top, #content_left_bottom li, #banner, .block_case_head, #case_top_right li, .block_case_head1, .block_case_head2, .block_case, #content_right_content_message, #page {
+	-moz-border-radius: 3px; /* Firefox 1+ */
+	-webkit-border-radius: 3px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 3px; /* IE9, Opera 10.5+ */
+}
+

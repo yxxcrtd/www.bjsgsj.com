@@ -1,0 +1,88 @@
+/* @By Yang XinXin */
+ @CHARSET "UTF-8";
+
+
+/* 欢迎信息的样式 */
+#welcome {
+	width: 140px;
+	font-size: 12px;
+	margin: 10px 0 3px 5px;
+}
+
+/* 登录后的用户名 */
+#info {
+	color: #FF0000;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* 菜单整体样式 */
+body {
+	padding: 0;
+	margin: 0 0 0 1px; /* 1px 是菜单与左边的边距 */
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+/* 去除超连接点击之后的虚线框 */
+a {
+	outline: none; /* Firefox */
+	text-decoration: none;
+	blr: expression(this.onFocus = this.blur()); /* IE, Opera*/
+}
+
+/* 超连接获得焦点时无轮廓 */
+a:focus {
+	-moz-outline-style: none; /* Firefox */
+}
+
+/* 菜单的宽度 */
+#menu {
+	margin: 0;
+	padding: 0;
+	width: 148px;
+}
+
+/* 去掉所有的 ul 和 li 前面默认的小园点 */
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+/* 所有的  li 与 上边距的距离 */
+li {
+	margin-top: 1px;
+}
+
+/* 父菜单的超连接样式 */
+ul.menu li a {
+	background: #0F0;
+	color: #FFF;
+	padding: 8px 6px 7px 23px;
+	background-image: url("../images/icon_plus.gif"); /* + */
+	background-repeat: no-repeat; /* 背景图片不重复 */
+	background-position: 5px center; /* 0代表横坐标，center代表纵坐标 */
+	/* 圆角 */
+	-moz-border-radius: 2px; /* Firefox 1+ */
+	-webkit-border-radius: 2px; /* Safri 3.0+, Chrome/Chromium */
+	border-radius: 2px; /* Opera 10.5+, IE9 */
+}
+
+/* 子菜单的超连接样式 */
+ul.menu li ul li a {
+	background: #F4F4F4; /* 背景颜色 */
+	color: #000; /* 字体颜色 */
+	padding-left: 25px;
+	font-size: 13px;
+}
+
+/* 鼠标移到子菜单上的超连接样式 */
+ul.menu li ul li a:hover {
+	color: #FFF !important; /* 字体颜色 */
+	background: #DFE4E8; /* 背景颜色 */
+	border-left: 5px #0F0 solid;
+	padding-left: 20px;
+}
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.bjsgsj.site.pojos.User" table="&quot;T_User&quot;">
+		<id name="userId" type="int">
+			<column name="&quot;UserId&quot;" />
+			<generator class="sequence">
+				<param name="sequence">&quot;T_User_UserId_seq&quot;</param>
+			</generator>
+		</id>
+		<property name="username" type="java.lang.String">
+			<column name="&quot;Username&quot;" length="32" not-null="true" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="&quot;Password&quot;" length="32" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

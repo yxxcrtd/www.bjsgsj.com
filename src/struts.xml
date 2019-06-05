@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "struts-2.1.dtd">
+
+<struts>
+	<!-- 加载 Struts2 默认的配置文件 -->
+	<include file="struts-default.xml" />
+	
+	<!-- 继承 Struts2 默认的配置文件 -->
+	<package name="bjsgsj-default" extends="struts-default">
+		<!-- 1，自定义拦截器 -->
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.bjsgsj.site.interceptor.LoginInterceptor" />
+			<!-- 如果只是一个拦截器的话，可以取其名；如果有一个以上的话，应该取系统的名称，因为所有的拦截器都放在系统拦截器栈中 -->
+			<interceptor-stack name="loginInterceptorStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 2，设置全局全局默认的拦截器栈-->
+		<default-interceptor-ref name="loginInterceptorStack"></default-interceptor-ref>
+		<!-- 3，定义全局 Result -->
+		<global-results>
+			<result name="login" type="freemarker">/WEB-INF/ftl/Login.ftl</result>
+		</global-results>
+	</package>
+	
+	<!-- 需要登录 -->
+	<package name="needLogin" extends="bjsgsj-default">
+		<!-- 后台管理 -->
+		<action name="admin" class="adminAction">
+			<result type="freemarker">/WEB-INF/ftl/admin/Index.ftl</result>
+		</action>
+		<action name="*Admin" class="adminAction" method="{1}">
+			<result name="menu" type="freemarker">/WEB-INF/ftl/admin/Menu.ftl</result>
+			<result name="line" type="freemarker">/WEB-INF/ftl/admin/Line.ftl</result>
+			<result name="main" type="freemarker">/WEB-INF/ftl/admin/Main.ftl</result>
+		</action>
+		
+		<!-- 站点管理 -->
+		<action name="site" class="siteAction">
+			<result type="freemarker" name="Index_Success">/WEB-INF/ftl/site/Index.ftl</result>
+			<result type="freemarker" name="Company_Success">/WEB-INF/ftl/site/Company.ftl</result>
+			<result type="freemarker" name="Project_Success">/WEB-INF/ftl/site/project.ftl</result>
+			<result type="freemarker" name="Message_Success">/WEB-INF/ftl/site/Message.ftl</result>
+		</action>
+		
+		<!-- 项目管理 -->
+		<action name="project" class="projectAction">
+			<result type="freemarker">/WEB-INF/ftl/project/ProjectList.ftl</result>
+			<result type="freemarker" name="Edit_Success">/WEB-INF/ftl/project/ProjectEdit.ftl</result>
+		</action>
+		
+		<!-- 图片管理 -->
+		<action name="picture" class="pictureAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png,image/pjpeg</param>
+				<param name="maximumSize">10485760</param><!-- 1024 * 1024Bit = 1M -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="loginInterceptorStack" />
+			<result name="input" type="freemarker">/WEB-INF/ftl/picture/PictureEdit.ftl</result>
+			<result type="freemarker">/WEB-INF/ftl/picture/PictureList.ftl</result>
+			<result type="freemarker" name="Edit_Success">/WEB-INF/ftl/picture/PictureEdit.ftl</result>
+		</action>
+		
+		<!-- 在线留言 -->
+		<action name="message" class="messageAction">
+			<result type="freemarker">/WEB-INF/ftl/message/MessageList.ftl</result>
+			<result type="freemarker" name="Edit_Success">/WEB-INF/ftl/message/MessageEdit.ftl</result>
+		</action>
+	</package>
+	
+	<!-- 不需要登录 -->
+	<package name="system" extends="struts-default">
+		<!-- 登录 -->
+		<action name="login" class="loginAction">
+			<result name="input" type="freemarker">/WEB-INF/ftl/Login.ftl</result>
+			<result type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 注销 -->
+		<action name="logout" class="logoutAction">
+			<result type="freemarker">/WEB-INF/ftl/Logout.ftl</result>
+		</action>
+	</package>
+	
+</struts>

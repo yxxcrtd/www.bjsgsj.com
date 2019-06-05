@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.bjsgsj.site.pojos.Picture" table="&quot;T_Picture&quot;">
+		<id name="pictureId" type="int">
+			<column name="&quot;PictureId&quot;" />
+			<generator class="sequence">
+				<param name="sequence">&quot;T_Picture_PictureId_seq&quot;</param>
+			</generator>
+		</id>
+		<many-to-one name="project" column="&quot;ProjectId&quot;" lazy="false" />
+		<!-- 仅供查询使用。因为上面已经关联了column，所以必须加上：insert="false" update="false" -->
+		<property name="projectId" type="int" insert="false" update="false">
+			<column name="&quot;ProjectId&quot;" />
+		</property>
+		<property name="describe" type="java.lang.String">
+			<column name="&quot;PictureDescribe&quot;" length="22" />
+		</property>
+		<property name="link" type="java.lang.String">
+			<column name="&quot;PictureLink&quot;" length="22" not-null="true" />
+		</property>
+		<property name="cases" type="java.lang.Boolean">
+			<column name="&quot;PictureCase&quot;" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

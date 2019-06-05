@@ -1,0 +1,62 @@
+/* @By Yang XinXin */
+@CHARSET "UTF-8";
+
+
+/* 表格样式 */
+table {
+	font-size: 12px; /* 表格中的字体 */
+	margin: 0;
+	padding: 0;
+}
+
+/* 设置文本输入框的宽度和高度（用于兼容不同的浏览器） */
+#username, #password {
+	width: 155px;
+	height: 23px;
+	font-weight: bold;
+}
+
+/* 验证码输入框的宽度和高度 */
+#verifyCode {
+	width: 78px;
+	height: 23px;
+}
+
+/* 登录框的样式 */
+div {
+	border: 1px dashed #E6DBC0; /* 虚线 */
+	
+	/* 圆角 */
+	-moz-border-radius: 7px; /* Firefox 1+ */
+	-webkit-border-radius: 7px; /* Chrome/Chromium, Safri 3.0+ */
+	border-radius: 7px; /* IE9, Opera 10.5+ */
+	
+	/* 阴影 (rgba 是原始 RGB 的扩展，加入了第四个参数：alpha通道，范围是0-1之间的小数，象：opacity : 0.95, 遮罩层不透明度) */
+	/* 阴影水平偏移值的四个参数：(可取正负值)；阴影垂直偏移值(可取正负值)；阴影模糊值；阴影颜色 */
+	-moz-box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5); /* Firefox 3.5+ */
+	-webkit-box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5); /* Safri 3.0+, Chrome/Chromium */
+	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5); /* Opera 10.5+, IE9 */
+}
+
+/* H2 的样式 */
+h2 {
+	font-size: 24px; /* 消除 IE 与 FireFox 之间的差异 */
+	padding-top: 10px;
+}
+
+/* 错误提示的样式 */
+.errorMessage {
+	 color: #F00;
+	 font-weight: bold;
+}
+
+/* 覆盖Freemarker模板的错误提示：去掉 ul 和 li 前面默认的小园点 */
+ul, li {
+	list-style: none;
+}
+
+/* 覆盖Freemarker模板的错误提示：清除子菜单前的缩进值 */
+ul {
+	padding: 0;
+	margin: 0;
+}

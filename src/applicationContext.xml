@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 定义 Hibernate 的 SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" autowire="autodetect">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.connection.provider_class">com.jolbox.bonecp.provider.BoneCPConnectionProvider</prop>
+				<prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
+				<prop key="hibernate.connection.url">jdbc:postgresql://localhost:5432/bjsgsj</prop>
+				<prop key="hibernate.connection.username">bjsgsj</prop>
+				<prop key="hibernate.connection.password">bjsgsj</prop>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="bonecp.idleMaxAge">60</prop><!-- 连接池中未使用的链接最大存活时间，单位是分，默认值：60，如果要永远存活设置为：0 -->
+				<prop key="bonecp.idleConnectionTestPeriod">240</prop><!-- 检查数据库连接池中空闲连接的间隔时间，单位是分，默认值：240，如果要取消则设置为：0 -->
+				<prop key="bonecp.partitionCount">2</prop><!-- 分区数 ，默认值：2，最小：1，推荐3-4，视应用而定 -->
+				<prop key="bonecp.acquireIncrement">3</prop><!-- 当连接池中的连接耗尽的时候，一次同时向数据库请求的连接数，默认值：3 -->
+				<prop key="bonecp.maxConnectionsPerPartition">20</prop><!-- 每个分区最大的连接数 -->
+	 			<prop key="bonecp.minConnectionsPerPartition">10</prop><!-- 每个分区最小的连接数 -->
+	 			<prop key="bonecp.preparedStatementCacheSize">0</prop><!-- 缓存prepared statements的大小，默认值：0 -->
+	 			<prop key="bonecp.statementsCachedPerConnection">30</prop>
+	 			<prop key="bonecp.releaseHelperThreads">3</prop><!-- 每个分区释放链接助理进程的数量，默认值：3，除非你的一个数据库连接的时间内做了很多工作，不然过多的助理进程会影响你的性能 -->
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/bjsgsj/site/pojos/User.hbm.xml</value>
+				<value>com/bjsgsj/site/pojos/Message.hbm.xml</value>
+				<value>com/bjsgsj/site/pojos/Project.hbm.xml</value>
+				<value>com/bjsgsj/site/pojos/Picture.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置事务（传播）管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" lazy-init="true">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 事务拦截器 -->
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 自动创建事务代理 -->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 登录 -->
+	<bean id="loginAction" class="com.bjsgsj.site.action.LoginAction" lazy-init="true" singleton="false">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<!-- 注销 -->
+	<bean id="logoutAction" class="com.bjsgsj.site.action.LogoutAction" lazy-init="true" singleton="false">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<!-- 后台管理 -->
+	<bean id="adminAction" class="com.bjsgsj.site.action.AdminAction" lazy-init="true" singleton="false"></bean>
+	
+	<!-- 站点管理 -->
+	<bean id="siteAction" class="com.bjsgsj.site.action.SiteAction" lazy-init="true" singleton="false">
+		<property name="siteService" ref="siteService" />
+		<property name="pictureService" ref="pictureService" />
+		<property name="projectService" ref="projectService" />
+		<property name="messageService" ref="messageService" />
+	</bean>
+	<bean id="siteService" class="com.bjsgsj.site.service.impl.SiteServiceImpl" lazy-init="true" />
+  	
+	<!-- 项目管理 -->
+	<bean id="projectAction" class="com.bjsgsj.site.action.ProjectAction" lazy-init="true" singleton="false">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="projectService" class="com.bjsgsj.site.service.impl.ProjectServiceImpl" lazy-init="true">
+		<property name="projectDao" ref="projectDao" />
+	</bean>
+	<bean id="projectDao" class="com.bjsgsj.site.dao.hibernate.ProjectDaoHibernate" lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+  	
+	<!-- 图片管理 -->
+	<bean id="pictureAction" class="com.bjsgsj.site.action.PictureAction" lazy-init="true" singleton="false">
+		<property name="pictureService" ref="pictureService" />
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="pictureService" class="com.bjsgsj.site.service.impl.PictureServiceImpl" lazy-init="true">
+		<property name="pictureDao" ref="pictureDao" />
+	</bean>
+	<bean id="pictureDao" class="com.bjsgsj.site.dao.hibernate.PictureDaoHibernate" lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+  	
+	<!-- 在线留言管理 -->
+	<bean id="messageAction" class="com.bjsgsj.site.action.MessageAction" lazy-init="true" singleton="false">
+		<property name="messageService" ref="messageService" />
+	</bean>
+	<bean id="messageService" class="com.bjsgsj.site.service.impl.MessageServiceImpl" lazy-init="true">
+		<property name="messageDao" ref="messageDao" />
+		<property name="projectDao" ref="projectDao" />
+	</bean>
+	<bean id="messageDao" class="com.bjsgsj.site.dao.hibernate.MessageDaoHibernate" lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+  	
+  	<!-- 用户管理 -->
+	<bean id="userService" class="com.bjsgsj.site.service.impl.UserServiceImpl" lazy-init="true">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="userDao" class="com.bjsgsj.site.dao.hibernate.UserDaoHibernate" lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+</beans>

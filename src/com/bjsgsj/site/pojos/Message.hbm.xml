@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.bjsgsj.site.pojos.Message" table="&quot;T_Message&quot;">
+		<id name="messageId" type="int">
+			<column name="&quot;MessageId&quot;" />
+			<generator class="sequence">
+				<param name="sequence">&quot;T_Message_MessageId_seq&quot;</param>
+			</generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="&quot;MessageName&quot;" length="10" not-null="true" />
+		</property>
+		<property name="telephone" type="java.lang.String">
+			<column name="&quot;MessageTelephone&quot;" length="22" not-null="true" />
+		</property>
+		<property name="content" type="java.lang.String">
+			<column name="&quot;MessageContent&quot;" length="150" not-null="true" />
+		</property>
+		<property name="reply" type="java.lang.String">
+			<column name="&quot;MessageReply&quot;" length="150" />
+		</property>
+		<property name="time" type="java.util.Date">
+			<column name="&quot;MessageTime&quot;" length="23" />
+		</property>
+		<property name="ip" type="java.lang.String">
+			<column name="&quot;MessageIp&quot;" length="15" />
+		</property>
+	</class>
+</hibernate-mapping>

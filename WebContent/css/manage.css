@@ -1,0 +1,165 @@
+/* @By Yang XinXin */
+@CHARSET "UTF-8";
+
+
+/* 页面整体样式 */
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF; /* 必须设置背景颜色，否则在IE9下会显示成灰色 */
+	font: 12px/1.5 tahoma, arial, 宋体, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* 所有的图片的边框都为0 */
+img {
+	border: 0;
+}
+
+textarea {
+	resize: none;
+}
+
+/* 整个页面容器 */
+#container {
+	width: 1000px;
+	margin: 0 auto; /* 居中 */
+	background-color: #FFFFFF;
+}
+
+/* 按纽样式 */
+.btn {
+	cursor: pointer;
+	padding: 2px 10px 3px;
+	_padding: 2px 4px 1px;
+	height: 23px;
+	_height: 22px;
+	font-size: 12px;
+	blr: expression(this.onFocus = this.blur () );
+}
+
+/* 按纽样式（点击后没有虚线框）*/
+.btn::-moz-focus-inner {
+	border: none;
+	border-color: transparent !important;
+}
+
+/* 表格的基本样式 */
+.table {
+	width: 100%;
+	border: 1px solid #E6DBC0;
+	border-collapse: collapse; /* 让相邻边框合并 */
+	
+	border-radius: 7px;
+	-moz-border-radius: 7px; /* Firefox */
+	-webkit-border-radius: 7px;
+}
+
+/* 表格 头 的 行和列 */
+.table thead tr th {
+	padding: 0;
+	margin: 0;
+	font-size: 13px;
+	border: 1px solid #E6DBC0;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAkCAYAAABIdFAMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHhJREFUeNo8zjsOxCAMBFB/KEAUFFR0Cbng3nQPw68ArZdAlOZppPFIBhH5EAB8b+Tlt9MYQ6i1BuqFaq1CKSVcxZ2Acs6406KUgpt5/LCKuVgz5BDCSb13ZO99ZOdcZGvt4mJjzMVKqcha68iIePB86GAiOv8CDADlIUQBs7MD3wAAAABJRU5ErkJggg%3D%3D") repeat-x scroll 0 0 transparent;
+	white-space: nowrap;
+	height: 23px;
+}
+
+/* 表格的表头样式 */
+#theader {
+	text-align: center;	
+	font-size: 24px;
+	font-weight: bold;
+	padding: 15px 0 15px 0;
+	text-shadow: 2px 1px 2px #0F0; /* 阴影的水平延伸距离; 阴影的垂直延伸距离; 模糊度; 颜色 */
+}
+
+/* 表格 体 的 列 */
+.table tbody tr td {
+	padding: 0;
+	margin: 0;
+	height: 23px; /* 数据行的高 */
+	border: 1px dashed #FEDDCA; /* dotted #E6DBC0; 是虚线 */
+}
+
+/* 表格数据上面的查询 */
+.tableSearch {
+	 text-align: right;
+	 margin: 20px 0 0 0;
+}
+
+/* 居中 */
+.table .center {
+	text-align: center;
+}
+
+/* 居左 */
+.table .left {
+	text-align: left;
+	padding-left: 5px;
+}
+
+/* 居右 */
+.table .right {
+	text-align: right;
+	padding-right: 8px;
+}
+
+/* 后台管理中的留言标题样式 */
+.message_title {
+	font-weight: bold;
+	background-color: #E6DBC0;
+}
+
+/* 查询等的提示信息 */
+.tip {
+	 color: #FF0000;
+	 font-weight: bold;
+	 text-align: center;
+}
+
+/* 分页的样式 */
+#pager {
+	text-align: right; /* 分页居右显示 */
+	margin: 0px; /* 边距都为：0 */
+}
+
+/* 表格的表头样式 */
+#header {
+	text-align: center;	
+	font-size: 24px;
+	font-weight: bold;
+	padding: 15px 0 15px 0;
+	text-shadow: 2px 1px 2px #0F0; /* 阴影的水平延伸距离; 阴影的垂直延伸距离; 模糊度; 颜色 */
+}
+
+/* 在线留言的Label标题 */
+.input {
+	border: medium none;
+	background: none repeat scroll 0 0 transparent;
+	border-bottom: 1px solid #CCCCCC;
+	height: 25px;
+	padding-top: 15px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	_padding-top: 10px;
+	_padding-bottom: 0;
+	_margin-bottom: 0;
+	font-size: 16px;
+	color: #F00;
+	width: 200px;
+}
+
+#content {
+	border: medium none;
+	background: url("../images/underline.gif") repeat scroll 0 0 transparent;
+	height: 160px;
+	line-height: 22px;
+	padding-top: 20px;
+	margin: -5px 0 0;
+	overflow: auto;
+	padding: 0 3px;
+	width: 500px;
+}
+

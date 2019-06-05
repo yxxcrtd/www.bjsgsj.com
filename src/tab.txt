@@ -1,0 +1,187 @@
+﻿
+1，FTL文件：
+
+<div id="case">
+	<div id="case_top">
+		<div id="case_top_left">
+			<strong>&nbsp;精选案例展示:</strong>
+		</div>
+		<div id="case_top_right">
+			<ul id="tab">
+				<li class="tabin">精选案例</li>
+				<li>中式别墅</li>
+				<li>中式公装</li>
+				<li>中式家装</li>
+				<li>古建园林</li>
+				<li>中式配饰</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="case_bottom">
+		<#-- 默认显示的精选案例 -->
+		<div class="contentin">
+			<#if caseList?? && 0 != caseList?size>
+				<#list caseList as case>
+					<div class="block_case">
+						<a href="./upload/${case.link!}" rel="contentin_group">
+							<img src="./upload/c_${case.link!}" width="244" height="150" title="${case.describe!}" /><br />
+							${case.describe!}
+						</a>
+					</div>
+					<#if (7 == case_index)>
+						<#break>
+					<#elseif (3 == case_index)>
+						<div class="gap_row"></div>
+					<#else>
+						<div class="gap_column">&nbsp;</div>
+					</#if>
+				</#list>
+			</#if>
+		</div>
+		
+		<#-- 分类循环 -->
+		<#assign sequence = ["villa", "equipment", "home", "garden", "decoration"]>
+		<#list sequence as seq>
+			<#-- 决定某个div显示与否 -->
+			<div class="content">
+				<#-- 获取有条件的循环的索引 -->
+				<#assign i = 0>
+				<#if caseList?? && 0 lt caseList?size>
+					<#list caseList as case>
+						<#if (seq == case.project.parent)>
+							<div class="block_case">
+								<a href="${seq}.html">
+									<img src="./upload/c_${case.link!}" width="244" height="150" title="${case.describe!}" /><br />
+									${case.describe!}
+								</a>
+							</div>
+							<#if case_has_next>
+								<#assign i = i + 1>
+								<#if i % 4 == 0>
+									<div class="gap_row"></div>
+								<#else>
+									<div class="gap_column">&nbsp;</div>
+								</#if>
+							</#if>
+						</#if>
+					</#list>
+				</#if>
+			</div>
+		</#list>
+	</div>
+</div>
+
+
+2，CSS文件：
+
+/* 案例展示 */
+#case {
+	float: left;
+	width: 1000px;
+	background-color: #FFFFFF;
+}
+	/* 案例展示的顶部 */
+	#case_top {
+		width: 1000px;
+		background-color: #FFFFFF;
+	}
+		/* 案例展示的顶部的左边 */
+		#case_top_left {
+			float: left;
+			height: 18px;
+			width: 130px;
+			padding: 5px 0;
+			background-color: #E6DBC0;
+		
+			/* 圆角 */
+			-moz-border-radius: 4px 0 0 0; /* Firefox 1+ */
+			-webkit-border-radius: 4px 0 0 0; /* Chrome/Chromium, Safri 3.0+ */
+			border-radius: 4px 0 0 0; /* IE9, Opera 10.5+ */
+		}
+		/* 案例展示的顶部的右边 */
+		#case_top_right {
+			float: left;
+			padding: 3px 0 0 0;
+			background-color: #E6DBC0;
+		
+			/* 圆角 */
+			-moz-border-radius: 0 4px 0 0; /* Firefox 1+ */
+			-webkit-border-radius: 0 4px 0 0; /* Chrome/Chromium, Safri 3.0+ */
+			border-radius: 0 4px 0 0; /* IE9, Opera 10.5+ */
+		}
+			#case_top_right ul {
+				margin: 0;
+				padding: 0;
+				height: 25px; /* 740 - (下面的分类推荐)156 - (gap_row)10 * 3 - (block_case) 260 * 2  */
+				width: 870px; /* 1000 - 130 */
+			}
+			
+			/* 标签页 */
+			#case_top_right li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			/* 让所有的 li 排在同一行 */
+			#case_top_right li {
+				float: left;
+				padding: 3px 15px;
+				_padding: 3px 15px 1px;
+				margin-right: 3px;
+				font-size: 12px;
+				
+				border: 1px solid #FFFFFF; /* 与下面相呼应 */
+				background-color: #E6DBC0;
+				color: #FFFFFF;
+				cursor: pointer;
+				
+				/* 圆角 */
+				-moz-border-radius: 4px; /* Firefox 1+ */
+				-webkit-border-radius: 4px; /* Chrome/Chromium, Safri 3.0+ */
+				border-radius: 4px; /* IE9, Opera 10.5+ */
+			}
+			
+			/* 当前显示的 Tab */
+			#case_top_right li.tabin {
+				color: #FF0000;
+				font-weight: bold;
+				font-size: 12px;
+				background-color: #E6DBC0;
+				border: 1px solid #FF0000; /* 与上面相呼应 */
+				
+				/* 圆角 */
+				-moz-border-radius: 4px; /* Firefox 1+ */
+				-webkit-border-radius: 4px; /* Chrome/Chromium, Safri 3.0+ */
+				border-radius: 4px; /* IE9, Opera 10.5+ */
+			}
+	#case_bottom {
+		width: 1000px;
+		background-color: #FFFFFF;
+	}
+
+
+3，JavaScript文件：
+var timeoutId;
+$(function() {
+	// 滑动门效果
+	$("#case_top_right li").each(function(index) {
+		// 有了index的值之后，就可以找到当前标签对应的内容区域
+		$(this).mouseover(function() {
+			var liNode = $(this);
+			timeoutId = setTimeout(function() {
+				// 将当前显示的区域隐藏
+				$("div.contentin").removeClass("contentin").addClass("content");
+				// 显示鼠标移上的区域
+				$("div.content").eq(index).removeClass("content").addClass("contentin");
+				
+				$("#case_top_right li.tabin").removeClass("tabin");
+				liNode.addClass("tabin");
+			}, 300);
+		}).mouseout(function() {
+			clearTimeout(timeoutId);
+		});
+	});
+});
+

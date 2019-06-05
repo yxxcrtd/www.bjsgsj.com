@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.bjsgsj.site.pojos.Project" table="&quot;T_Project&quot;">
+		<id name="projectId" type="int">
+			<column name="&quot;ProjectId&quot;" />
+			<generator class="sequence">
+				<param name="sequence">&quot;T_Project_ProjectId_seq&quot;</param>
+			</generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="&quot;ProjectName&quot;" length="15" not-null="true" />
+		</property>
+		<property name="describe" type="java.lang.String">
+			<column name="&quot;ProjectDescribe&quot;" length="150" not-null="true" />
+		</property>
+		<property name="parent" type="java.lang.String">
+			<column name="&quot;ProjectParent&quot;" length="10" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

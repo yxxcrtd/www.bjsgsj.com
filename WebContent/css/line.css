@@ -1,0 +1,29 @@
+/* @By Yang XinXin */
+@CHARSET "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+/* 表格样式 */
+table {
+	height: 100%;
+}
+
+/* 关闭/展开 之间切换的 列 样式 */
+#tdBar {
+	cursor: pointer;
+	background-color: #E6DBC0;
+}
+
+/* 关闭/展开 之间切换的 左右箭头的 样式 */
+#switchBar {
+	color: #00FF00;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 16px;
+	background-color: #E6DBC0;
+}

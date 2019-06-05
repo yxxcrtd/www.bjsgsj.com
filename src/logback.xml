@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+%d: 日志的输出时间，可以指定格式，比如：%d{yyyy-MM-dd HH:mm:ss,SSS}
+%p: 日志的输出级别，即：TRACE(跟踪) < DEBUG < INFO < WARN < ERROR (详情：org.slf4j.spi.LocationAwareLogger)
+%t: 日志的线程名
+%r: 耗费时间(毫秒)
+%c: 类的全称
+%l: 代码中的行数
+%%: 输出一个"%"字符
+%F: 输出文件名称
+%m: 输出代码中指定的消息
+%n: 回车换行，Windows平台为："\r\n"，Unix平台为："\n"
+-->
+
+<configuration>
+	<timestamp key="byDay" datePattern="yyyy-MM-dd" />
+	
+	<!-- 输出到控制台 -->
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout"><!-- 日志的缩写定义 -->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%t] %c:%L - %m%n</pattern>
+		</layout>
+	</appender>
+	
+	<!-- 输出到 log 日志 -->
+	<appender name="FileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/bjsgsj.${byDay}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/bjsgsj.${byDay}.%i.zip</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>5</MaxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize><!-- 日志达到10M的时候会自动被打成 zip包 -->
+		</triggeringPolicy>
+		<!-- 
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<MaxHistory>7</MaxHistory>
+		</rollingPolicy>
+		 -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd-HH-mm} [%thread] %-5level %logger{10} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<!-- 输出到HTML文件 -->
+	<!--
+	<appender name="FileHtml" class="ch.qos.logback.core.FileAppender">
+		<file>${catalina.base}/logs/${byDay}.html</file>
+		<layout class="ch.qos.logback.classic.html.HTMLLayout">
+			<endoder charset="UTF-8">
+				<pattern>%d{yyyy-MM-dd HH:mm:ss} %level %thread %10logger %file %line%msg</pattern>
+			</encoder>
+		</layout>
+	</appender>
+	-->
+
+	<!-- 输出到邮件 -->
+	<!--
+	<appender name="Email" class="ch.qos.logback.classic.net.SMTPAppender">
+		<SMTPHost>smtp.126.com</SMTPHost>
+		<From>yxxcrtd@126.com</From>
+		<To>yxxcrtd@gmail.com</To>
+		<Subject>测试 Email Function:%logger{20} - %m</Subject>
+		<layout class="ch.qos.logback.classic.html.HTMLLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level %thread %10logger %file %line %msg</pattern>
+		</layout>
+	</appender>
+	-->
+
+	<!-- 输出到数据库 -->
+	<!--
+	<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+		<connectionSourceclass="ch.qos.logback.core.db.DriverManagerConnectionSource">
+			<driverClass>com.mysql.jdbc.Driver</driverClass>
+			<url>jdbc:mysql://localhost:3306/test</url>
+			<user>root</user>
+			<password>123456</password>
+		</connectionSource>
+	</appender>
+	-->
+	
+	<!-- 系统日志输出的级别 -->
+	<logger name="org.hibernate.cfg" level="INFO" />
+	<logger name="ch.qos.logback.core" level="ERROR" />
+	
+	<!-- 用户日志输出的级别 -->
+	<logger name="com.bjsgsj.site.action" level="INFO" />
+	<logger name="com.bjsgsj.site.interceptor" level="TRACE" />
+	<logger name="com.bjsgsj.site.service.impl" level="INFO" />
+	<logger name="com.bjsgsj.site.dao.hibernate" level="INFO" />
+	
+	<!-- 启动 -->
+	<root level="ERROR">
+		<appender-ref ref="Console" />
+		<appender-ref ref="FileLog" />
+		<!--
+		<appender-ref ref="FileHtml" />
+		<appender-ref ref="Email" />
+		<appender-ref ref="DB" />
+		-->
+	</root>
+</configuration>
